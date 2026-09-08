@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Conteúdo programático da Formação em Análise de Dados: Excel, Power Query, DAX e Power BI." />
+  <meta name="theme-color" content="#0b1220" />
+  <title>Formação em Análise de Dados | Conteúdo Programático</title>
+  <style>
+    :root{
+      --bg:#f5f7fb;--surface:#ffffff;--surface-2:#eef2f7;--text:#111827;--muted:#667085;
+      --border:#dbe2ea;--shadow:0 18px 50px rgba(15,23,42,.10);--shadow-sm:0 8px 24px rgba(15,23,42,.07);
+      --excel:#107c41;--pq:#d7a400;--dax:#6f42c1;--ink:#0b1220;--white:#fff;
+      --radius:22px;--radius-sm:14px;--max:1180px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    button,a{font:inherit}
+    a{color:inherit}
+    button{cursor:pointer}
+    :focus-visible{outline:3px solid #2563eb;outline-offset:3px}
+    .wrap{width:min(var(--max),calc(100% - 36px));margin-inline:auto}
+    .topbar{position:sticky;top:0;z-index:30;background:rgba(11,18,32,.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+    .nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+    .brand{display:flex;align-items:center;gap:12px;color:white;text-decoration:none;font-weight:800;letter-spacing:-.02em}
+    .brand-mark{width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--excel),var(--pq) 52%,var(--dax));box-shadow:inset 0 0 0 1px rgba(255,255,255,.24)}
+    .brand-photo{width:42px;height:42px; border-radius:50%; object-fit:cover; object-position:center; border:2px solid rgba(255,255,255,.75);  box-shadow:0 4px 14px rgba(0,0,0,.25);}
+    .nav-links{display:flex;gap:8px;align-items:center}
+    .nav-links a{color:#d5dbea;text-decoration:none;padding:10px 12px;border-radius:10px;font-size:.93rem}
+    .nav-links a:hover{background:rgba(255,255,255,.08);color:white}
+    .hero{background:
+      radial-gradient(circle at 10% 5%,rgba(16,124,65,.25),transparent 28%),
+      radial-gradient(circle at 88% 24%,rgba(111,66,193,.28),transparent 26%),
+      linear-gradient(135deg,#08111f 0%,#111c32 58%,#0d1424 100%);color:white;padding:86px 0 74px;overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:1.45fr .85fr;gap:54px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.13);font-size:.82rem;font-weight:700;color:#e7ebf4;letter-spacing:.03em;text-transform:uppercase}
+    h1{font-size:clamp(2.5rem,6vw,5.1rem);line-height:.98;letter-spacing:-.055em;margin:18px 0 22px;max-width:880px}
+    .hero p{font-size:clamp(1rem,1.5vw,1.2rem);color:#cbd4e3;max-width:760px;margin:0 0 28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:0;border-radius:12px;padding:12px 16px;text-decoration:none;font-weight:750;transition:.18s ease}
+    .btn-primary{background:white;color:#0c1526}.btn-primary:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(0,0,0,.22)}
+    .btn-ghost{color:white;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14)}.btn-ghost:hover{background:rgba(255,255,255,.12)}
+    .hero-card{border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.07);border-radius:26px;padding:26px;box-shadow:0 30px 80px rgba(0,0,0,.25)}
+    .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+    .stat{padding:16px 12px;background:rgba(255,255,255,.06);border-radius:15px;text-align:center;border:1px solid rgba(255,255,255,.08)}
+    .stat strong{display:block;font-size:1.55rem;line-height:1}.stat span{display:block;color:#aeb9ca;font-size:.78rem;margin-top:7px}
+    .path{display:grid;gap:10px}
+    .path-row{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:12px;border-radius:14px;background:rgba(255,255,255,.05)}
+    .path-icon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;font-weight:900;color:white}
+    .path-row:nth-child(1) .path-icon{background:var(--excel)}.path-row:nth-child(2) .path-icon{background:#b98c00}.path-row:nth-child(3) .path-icon{background:var(--dax)}
+    .path-row small{color:#aeb9ca}.path-row b{font-size:.92rem}.path-row > span:last-child{color:#d7deea;font-size:.82rem}
+    section{padding:74px 0}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;margin-bottom:28px}
+    .section-head h2{font-size:clamp(1.9rem,4vw,3.15rem);letter-spacing:-.045em;line-height:1.05;margin:8px 0}
+    .section-head p{color:var(--muted);max-width:700px;margin:0}
+    .kicker{font-size:.78rem;font-weight:850;text-transform:uppercase;letter-spacing:.11em;color:#475467}
+    .modules{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .module-card{position:relative;text-align:left;border:1px solid var(--border);background:var(--surface);border-radius:var(--radius);padding:24px;min-height:225px;box-shadow:var(--shadow-sm);transition:.2s ease;overflow:hidden}
+    .module-card::after{content:"";position:absolute;inset:auto -20px -50px auto;width:130px;height:130px;border-radius:50%;background:var(--module);opacity:.08}
+    .module-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+    .module-card.active{border-color:color-mix(in srgb,var(--module) 65%,#fff);box-shadow:0 0 0 3px color-mix(in srgb,var(--module) 12%,transparent),var(--shadow-sm)}
+    .module-no{display:flex;align-items:center;justify-content:space-between;color:var(--muted);font-size:.82rem;font-weight:700}
+    .module-dot{width:12px;height:12px;border-radius:50%;background:var(--module);box-shadow:0 0 0 5px color-mix(in srgb,var(--module) 12%,transparent)}
+    .module-card h3{font-size:1.42rem;margin:28px 0 8px;letter-spacing:-.025em}.module-card p{color:var(--muted);margin:0;font-size:.95rem}
+    .module-meta{margin-top:22px;font-size:.86rem;font-weight:750;color:#344054}
+    .course-browser{padding-top:20px}
+    .browser-shell{background:var(--surface);border:1px solid var(--border);border-radius:28px;box-shadow:var(--shadow);overflow:hidden}
+    .browser-head{padding:28px 30px 22px;border-bottom:1px solid var(--border);display:flex;align-items:flex-start;justify-content:space-between;gap:20px}
+    .browser-title{display:flex;gap:14px;align-items:center}.browser-chip{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-weight:900;color:white;background:var(--active-color)}
+    .browser-title h3{margin:0;font-size:1.35rem}.browser-title p{margin:4px 0 0;color:var(--muted);font-size:.92rem}
+    .module-progress{min-width:180px;text-align:right}.module-progress small{color:var(--muted)}
+    .progress-track{height:7px;border-radius:999px;background:#e9edf3;margin-top:9px;overflow:hidden}.progress-bar{height:100%;background:var(--active-color);border-radius:999px;transition:.3s ease}
+    .lesson-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:24px 28px}
+    .lesson-btn{border:1px solid var(--border);background:#fbfcfe;border-radius:15px;text-align:left;padding:15px;min-height:110px;transition:.18s ease;color:var(--text)}
+    .lesson-btn:hover{border-color:#b9c3d0;background:white;transform:translateY(-1px)}
+    .lesson-btn.active{background:color-mix(in srgb,var(--active-color) 7%,white);border-color:color-mix(in srgb,var(--active-color) 50%,white);box-shadow:0 0 0 2px color-mix(in srgb,var(--active-color) 10%,transparent)}
+    .lesson-btn span{display:block;color:var(--active-color);font-size:.76rem;font-weight:850;text-transform:uppercase;letter-spacing:.06em;margin-bottom:7px}
+    .lesson-btn strong{display:block;font-size:.93rem;line-height:1.32}
+    .lesson-detail{margin:0 28px 28px;border-radius:20px;background:#0d1728;color:white;overflow:hidden;display:grid;grid-template-columns:.92fr 1.08fr}
+    .detail-main{padding:32px}.detail-side{padding:32px;background:rgba(255,255,255,.045);border-left:1px solid rgba(255,255,255,.08)}
+    .lesson-label{color:#aeb9ca;text-transform:uppercase;letter-spacing:.1em;font-size:.75rem;font-weight:800}.detail-main h4{font-size:clamp(1.6rem,3vw,2.35rem);line-height:1.05;letter-spacing:-.04em;margin:10px 0 16px}
+    .objective{color:#d2d8e3;margin:0 0 24px}.detail-main h5,.detail-side h5{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:#aeb9ca;margin:0 0 12px}
+    .content-list{margin:0;padding-left:20px;color:#e6eaf1}.content-list li+li{margin-top:8px}
+    .practice-card{padding:18px;border:1px solid rgba(255,255,255,.11);border-radius:15px;background:rgba(255,255,255,.05)}
+    .practice-card+.practice-card{margin-top:12px}.practice-card p{margin:0;color:#e5e9f0}.practice-card small{display:block;color:#9eabbe;margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:.06em}
+    .detail-nav{display:flex;gap:8px;margin-top:20px}.detail-nav button{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.06);color:white;border-radius:10px;padding:9px 11px}.detail-nav button:hover{background:rgba(255,255,255,.1)}.detail-nav button:disabled{opacity:.35;cursor:not-allowed}
+    .outcomes{background:#0d1728;color:white}.outcome-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}.outcome{border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:20px;background:rgba(255,255,255,.045)}.outcome b{display:block;margin-bottom:8px}.outcome p{margin:0;color:#b9c3d3;font-size:.91rem}
+    .refs{display:grid;grid-template-columns:1fr 1fr;gap:18px}.ref-card{background:white;border:1px solid var(--border);border-radius:18px;padding:20px;text-decoration:none;box-shadow:var(--shadow-sm)}.ref-card:hover{border-color:#b9c3d0}.ref-card small{color:var(--muted)}.ref-card strong{display:block;margin-top:3px}
+    footer{padding:32px 0 50px;color:#667085;font-size:.88rem}.footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid var(--border);padding-top:24px}.footer-row a{font-weight:700;color:#344054;text-decoration:none}
+    @media (max-width:900px){.hero-grid{grid-template-columns:1fr}.hero-card{max-width:620px}.modules{grid-template-columns:1fr}.lesson-grid{grid-template-columns:repeat(2,1fr)}.lesson-detail{grid-template-columns:1fr}.detail-side{border-left:0;border-top:1px solid rgba(255,255,255,.08)}.outcome-grid{grid-template-columns:repeat(2,1fr)}.refs{grid-template-columns:1fr}.module-progress{display:none}}
+    @media (max-width:620px){.wrap{width:min(100% - 24px,var(--max))}.nav-links a:not(.keep){display:none}.hero{padding:58px 0}.hero-actions{display:grid}.btn{width:100%}.stats{grid-template-columns:1fr 1fr 1fr}.stat strong{font-size:1.3rem}.section-head{display:block}.lesson-grid{grid-template-columns:1fr;padding:18px}.lesson-detail{margin:0 18px 18px}.browser-head{padding:22px 20px}.detail-main,.detail-side{padding:24px 20px}.outcome-grid{grid-template-columns:1fr}.footer-row{display:block}.footer-row a{display:inline-block;margin-top:10px}}
+    @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap nav">
+      <a class="brand" href="#inicio" aria-label="Ir para o início">
+        <img class="brand-photo" src="https://media.licdn.com/dms/image/v2/D4D03AQFa7-WgB0dMsQ/profile-displayphoto-scale_400_400/B4DZ2xfeaKJYAg-/0/1776799313476?e=1790208000&v=beta&t=hGkCBY4tvmOX8S66chtCPTbKibYhEgBj-gsqxAIDFlg" alt="Rafael">
+        <span>Formação em Análise de Dados</span></a>
+      <nav class="nav-links" aria-label="Navegação principal">
+        <a href="#trilha">Trilha</a><a href="#aulas">Aulas</a><a href="#resultados">Resultados</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <div class="wrap hero-grid">
+        <div>
+          <span class="eyebrow">Excel • Power Query • DAX • Power BI</span>
+          <h1>Do dado bruto ao insight.</h1>
+          <p>Uma formação prática para desenvolver autonomia em análise de dados. O Excel é o ambiente principal; Power Query entra como camada de tratamento e automação; DAX e o Modelo de Dados ampliam a análise e fazem a ponte natural para o Power BI.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#trilha">Explorar o conteúdo →</a>
+          </div>
+        </div>
+        <aside class="hero-card" aria-label="Resumo do curso">
+          <div class="stats">
+            <div class="stat"><strong>24</strong><span>aulas</span></div>
+            <div class="stat"><strong>2h</strong><span>por encontro</span></div>
+            <div class="stat"><strong>48h</strong><span>carga total</span></div>
+          </div>
+          <div class="path">
+            <div class="path-row"><span class="path-icon">X</span><span><b>Excel</b><small>Fundamentos, fórmulas e análise</small></span><span>1–8</span></div>
+            <div class="path-row"><span class="path-icon">M</span><span><b>Power Query</b><small>ETL, linguagem M e automação</small></span><span>9–16</span></div>
+            <div class="path-row"><span class="path-icon">D</span><span><b>DAX + Modelo</b><small>Medidas, contexto e Power BI</small></span><span>17–24</span></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="trilha">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker">Mapa da formação</span><h2>Três etapas, uma única jornada.</h2></div>
+          <p>Cada módulo prepara o próximo. Começamos estruturando e analisando dados no Excel, avançamos para processos reproduzíveis no Power Query e terminamos com modelo, DAX e visualização no Power BI.</p>
+        </div>
+        <div class="modules" id="moduleCards" aria-label="Módulos do curso"></div>
+      </div>
+    </section>
+
+    <section class="course-browser" id="aulas">
+      <div class="wrap">
+        <div class="browser-shell" id="browserShell">
+          <div class="browser-head">
+            <div class="browser-title"><span class="browser-chip" id="browserChip">X</span><div><h3 id="browserTitle">Módulo 1 — Excel</h3><p id="browserDescription"></p></div></div>
+            <div class="module-progress"><small id="progressLabel"></small><div class="progress-track"><div class="progress-bar" id="progressBar"></div></div></div>
+          </div>
+          <div class="lesson-grid" id="lessonGrid" aria-label="Aulas do módulo"></div>
+          <article class="lesson-detail" id="lessonDetail" aria-live="polite"></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="outcomes" id="resultados">
+      <div class="wrap">
+        <div class="section-head">
+          <div><span class="kicker" style="color:#9eabbe">Ao final das 48 horas</span><h2>O que você deverá conseguir fazer.</h2></div>
+          <p style="color:#b9c3d3">A formação prioriza autonomia: não apenas saber qual botão usar, mas entender a estrutura do problema e escolher a ferramenta adequada.</p>
+        </div>
+        <div class="outcome-grid">
+          <div class="outcome"><b>Estruturar</b><p>Organizar bases de Excel preparadas para análise, atualização e automação.</p></div>
+          <div class="outcome"><b>Automatizar</b><p>Construir consultas Power Query reproduzíveis, combinar arquivos e tratar erros sem copiar e colar mensalmente.</p></div>
+          <div class="outcome"><b>Modelar</b><p>Montar um modelo estrela básico com fato, dimensões, calendário e relacionamentos coerentes.</p></div>
+          <div class="outcome"><b>Analisar</b><p>Criar medidas DAX comparativas, temporais e gerenciais entendendo contexto de filtro.</p></div>
+          <div class="outcome"><b>Interpretar M</b><p>Reconhecer valores, tipos, List, Record, Table e Function durante a navegação no Power Query.</p></div>
+          <div class="outcome"><b>Comunicar</b><p>Transformar medidas em dashboards e insights objetivos no Excel e no Power BI.</p></div>
+          <div class="outcome"><b>Diagnosticar</b><p>Identificar problemas de chaves, tipos, granularidade, nulos e transformações frágeis.</p></div>
+          <div class="outcome"><b>Transferir conhecimento</b><p>Perceber o que permanece igual entre Excel, Power Query, Power Pivot e Power BI.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="referencias">
+      <div class="wrap">
+        <div class="section-head"><div><span class="kicker">Para aprofundar</span><h2>Referências técnicas.</h2></div><p>Documentação oficial para consulta durante e depois das aulas.</p></div>
+        <div class="refs">
+          <a class="ref-card" href="https://learn.microsoft.com/pt-br/powerquery-m/m-spec-values" target="_blank" rel="noopener"><small>Microsoft Learn</small><strong>Valores da linguagem Power Query M ↗</strong></a>
+          <a class="ref-card" href="https://learn.microsoft.com/pt-br/powerquery-m/power-query-m-type-system" target="_blank" rel="noopener"><small>Microsoft Learn</small><strong>Sistema de tipos do Power Query M ↗</strong></a>
+          <a class="ref-card" href="https://learn.microsoft.com/pt-br/dax/dax-overview" target="_blank" rel="noopener"><small>Microsoft Learn</small><strong>Visão geral do DAX ↗</strong></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-row"><span>Formação em Análise de Dados • Excel → Power Query → DAX → Power BI</span><a href="#inicio">Voltar ao topo ↑</a></div></footer>
+
+<script>
+const course = [
+  {
+    name:'Excel', icon:'X', range:'Aulas 1–8', color:'#107c41',
+    focus:'Fundamentos, fórmulas e análise',
+    description:'Construa uma base mental sólida: estrutura tabular, fórmulas confiáveis, cruzamentos, limpeza e análise com Tabela Dinâmica.',
+    lessons:[
+      {n:1,title:'Estrutura de dados e fundamentos do Excel',objective:'Construir a base mental correta antes de avançar para fórmulas e automação.',content:['Interface, navegação e atalhos essenciais.','Diferença entre base de dados, cálculo e relatório.','Boas práticas tabulares: uma linha por ocorrência, uma coluna por atributo e cabeçalhos únicos.','Tabelas do Excel, filtros, ordenação e referências estruturadas.','Formatação de números, moedas, percentuais e datas; valor versus aparência.'],practice:'Reorganizar uma planilha de vendas propositalmente ruim e transformá-la em uma tabela pronta para análise.',evidence:'Base estruturada, filtrável e sem problemas de layout que prejudiquem análises posteriores.'},
+      {n:2,title:'Referências e fórmulas fundamentais',objective:'Criar cálculos corretos e compreender como o Excel replica fórmulas.',content:['Operadores aritméticos e precedência.','Referências relativas, absolutas e mistas.','SOMA, MÉDIA, MÍNIMO, MÁXIMO, CONT.NÚM e CONT.VALORES.','ARRED e porcentagens.','Referências estruturadas em Tabelas do Excel.'],practice:'Montar uma apuração de vendas com valor, média, participação e metas fixadas em células de parâmetro.',evidence:'Fórmulas copiadas corretamente sem referências quebradas.'},
+      {n:3,title:'Lógica, condições e tratamento de erros',objective:'Converter regras de negócio em fórmulas compreensíveis e resistentes a exceções.',content:['SE e testes lógicos.','E, OU e combinações de condições.','SES e quando evitar aninhamentos excessivos.','SEERRO e tratamento consciente de exceções.','Legibilidade: dividir problemas grandes em etapas menores.'],practice:'Classificar vendedores por faixa de atingimento e tratar casos sem cadastro ou com divisão inválida.',evidence:'Classificação coerente com as regras e sem erros visíveis.'},
+      {n:4,title:'Agregações por critérios',objective:'Responder perguntas gerenciais sem depender ainda de Tabela Dinâmica.',content:['SOMASE e SOMASES.','CONT.SE e CONT.SES.','MÉDIASE e MÉDIASES.','Critérios com texto, números, operadores e datas.','Construção de pequenos quadros-resumo.'],practice:'Criar uma análise de faturamento por região, produto e período a partir de uma única tabela de vendas.',evidence:'Quadro-resumo parametrizado e consistente com os critérios solicitados.'},
+      {n:5,title:'Busca e relacionamento entre tabelas',objective:'Entender o papel das chaves e enriquecer uma base com cadastros auxiliares.',content:['PROCV e suas limitações.','PROCX como abordagem preferencial quando disponível.','ÍNDICE + CORRESP como alternativa conceitual.','Busca exata, valor não encontrado e duplicidade de chave.','Introdução ao conceito de chave usado depois em Merge e relacionamentos.'],practice:'Trazer descrição, categoria, gerente e meta a partir de cadastros separados.',evidence:'Base enriquecida e diagnóstico de pelo menos um problema de chave ou duplicidade.'},
+      {n:6,title:'Texto, datas e limpeza de dados',objective:'Preparar dados textuais e temporais antes de automatizar o processo no Power Query.',content:['ARRUMAR, LIMPAR e substituições.','ESQUERDA, DIREITA, EXT.TEXTO e LOCALIZAR/PROCURAR.','Concatenação com & e função TEXTO.','ANO, MÊS, DIA, HOJE e FIMMÊS.','Conversão e padronização de datas e identificadores.'],practice:'Limpar uma base de clientes com nomes, códigos e datas inconsistentes e criar atributos de período.',evidence:'Cadastro padronizado e colunas de Ano/Mês úteis para análise.'},
+      {n:7,title:'Excel moderno: matrizes dinâmicas e LET',objective:'Reduzir fórmulas repetitivas e criar análises dinâmicas.',content:['ÚNICO, FILTRO e CLASSIFICAR.','SEQUÊNCIA para séries simples.','LET para nomear etapas e melhorar legibilidade.','Combinação de matrizes dinâmicas com Tabelas do Excel.','Alternativas para versões sem funções dinâmicas.'],practice:'Criar listas dinâmicas de clientes/produtos e um relatório filtrável por critérios em células.',evidence:'Relatório que se expande automaticamente quando a base cresce.'},
+      {n:8,title:'Tabela Dinâmica, gráficos e mini-dashboard',objective:'Consolidar o módulo Excel transformando dados em uma leitura gerencial.',content:['Tabela Dinâmica: campos, linhas, colunas, valores e filtros.','Agrupamento de datas, segmentações e linha do tempo.','Gráficos para comparação, tendência e composição.','KPIs e formatação condicional sem excesso visual.','Narrativa: o que aconteceu, onde e quanto mudou.'],practice:'Construir um mini-dashboard de vendas com faturamento, tendência mensal, região, vendedor e produtos.',evidence:'Dashboard funcional acompanhado de 2 ou 3 insights objetivos.'}
+    ]
+  },
+  {
+    name:'Power Query', icon:'M', range:'Aulas 9–16', color:'#b98c00',
+    focus:'ETL, linguagem M e automação',
+    description:'Aprenda a criar processos de tratamento reproduzíveis e a compreender os tipos e estruturas que existem por trás da interface do Power Query.',
+    lessons:[
+      {n:9,title:'Fundamentos de ETL e interface do Power Query',objective:'Entender por que o Power Query existe e como uma consulta registra transformações reproduzíveis.',content:['ETL: extrair, transformar e carregar.','Quando usar fórmula e quando usar Power Query.','Etapas aplicadas, painel de consultas e atualização.','Importação de Excel, CSV e tabela do próprio arquivo.','Tipos de dados na interface e erros causados por tipagem incorreta.'],practice:'Importar uma base bruta, remover colunas, corrigir tipos, filtrar registros e carregar em uma tabela do Excel.',evidence:'Consulta atualizável sem edição manual da base de origem.'},
+      {n:10,title:'Linguagem M: valores, expressões e sistema de tipos',objective:'Criar vocabulário suficiente para ler código M e diagnosticar erros de tipo.',content:['Relação entre interface gráfica e código M.','Expressões, nomes de etapas e estrutura let ... in.','Valor versus tipo; Value.Type e Value.Is como conceitos.','null, logical, number, text, date, time, datetime, datetimezone, duration e binary.','any, nullable e conversão explícita; por que "10" e 10 são diferentes.'],practice:'Criar pequenas expressões M e testar conversões, nulos, datas e erros de incompatibilidade.',evidence:'Explicar o tipo de um valor e localizar a etapa em que a tipagem foi alterada.'},
+      {n:11,title:'List, Record, Table e Function na prática',objective:'Compreender as formas de valor que aparecem continuamente por trás da interface do Power Query.',content:['List: sequência de valores, sintaxe { ... } e funções List.*.','Record: campos, sintaxe [Campo = Valor] e acesso por nome.','Table: linhas, colunas, navegação e funções Table.*.','Function: argumentos, retorno e sintaxe (x) => ... .','Drill-down e conversões entre Table, List, Record e valores.'],practice:'Partir de uma tabela, navegar deliberadamente entre Table → List/Record → valor e criar uma função simples.',evidence:'Reconhecer o tipo retornado por uma etapa e escolher funções compatíveis com esse tipo.'},
+      {n:12,title:'Transformações, qualidade e tratamento de erros',objective:'Limpar dados de forma robusta usando operações coerentes com seus tipos.',content:['Transformações de texto, número e data.','Dividir, extrair, substituir, preencher e remover duplicados.','Coluna condicional e coluna personalizada.','Perfil, qualidade e distribuição de coluna.','try ... otherwise; null versus texto vazio versus zero.'],practice:'Higienizar uma base com datas inválidas, códigos sujos, nulos e valores fora do padrão.',evidence:'Base limpa com regras explícitas e tratamento de exceções documentado.'},
+      {n:13,title:'Modelagem da forma dos dados: pivot, unpivot e agrupamentos',objective:'Transformar planilhas desenhadas para leitura humana em dados preparados para análise.',content:['Transpor dados quando necessário.','Pivotar e despivotar colunas.','Atributos em colunas e ocorrências em linhas.','Agrupamentos e agregações.','Granularidade: o que cada linha representa.'],practice:'Transformar uma base com produtos ou meses em colunas em uma estrutura tabular adequada para análise.',evidence:'Tabela normalizada, com granularidade clara e pronta para ser relacionada e agregada.'},
+      {n:14,title:'Combinar dados: anexar, mesclar e joins',objective:'Unir fontes de forma consistente e compreender a lógica relacional.',content:['Append para empilhar tabelas com a mesma estrutura.','Merge para cruzar tabelas por chaves.','Left Outer, Inner e Anti Join.','Expansão de colunas e prevenção de duplicidades inesperadas.','Relação entre PROCX, Merge e chaves de relacionamento.'],practice:'Combinar vendas com cadastros de produto, cliente e vendedor e validar registros sem correspondência.',evidence:'Fonte consolidada sem multiplicação indevida de linhas e com chaves verificadas.'},
+      {n:15,title:'Automação por pasta e combinação de arquivos',objective:'Automatizar um processo mensal que normalmente dependeria de copiar e colar.',content:['Conector de pasta / Folder.Files.','Content como Binary e por que esse tipo aparece.','Combinar arquivos e consultas auxiliares geradas automaticamente.','Preservar nome do arquivo e metadados úteis.','Teste de atualização pela inclusão de um novo arquivo.'],practice:'Conectar a uma pasta com arquivos mensais, combinar todos e validar a entrada automática de um novo mês.',evidence:'Pipeline de pasta funcionando apenas por atualização, sem copiar e colar.'},
+      {n:16,title:'Parâmetros, funções personalizadas e projeto de ETL',objective:'Consolidar a linguagem M e transformar etapas repetidas em lógica reutilizável.',content:['Parâmetros e cenários de parametrização.','Função personalizada: assinatura, parâmetros, retorno e invocação.','Transformar uma consulta em função quando existe padrão repetitivo.','Leitura guiada de Table.*, List.*, Record.* e Text.*.','Organização de consultas: staging, referência e carga.'],practice:'Mini-projeto com múltiplos arquivos, função de tratamento, combinação, normalização e tabelas prontas para o modelo.',evidence:'Fluxo de ETL completo, legível, atualizável e reaproveitável no Excel e no Power BI.'}
+    ]
+  },
+  {
+    name:'DAX + Modelo', icon:'D', range:'Aulas 17–24', color:'#6f42c1',
+    focus:'Modelo, medidas e Power BI',
+    description:'Entenda DAX como linguagem de análise sobre um modelo de dados: primeiro o modelo, depois medidas, contexto, comparações e visualização.',
+    lessons:[
+      {n:17,title:'Modelo de Dados, Power Pivot e esquema estrela',objective:'Evitar DAX frágil criando primeiro um modelo coerente.',content:['Modelo de Dados do Excel/Power Pivot e visão de Modelo no Power BI.','Tabela fato, dimensões e granularidade.','Chaves, relacionamentos 1:N e direção de filtro.','Esquema estrela e por que evitar uma única tabela gigante como padrão.','Dimensão calendário e requisitos para análises temporais.'],practice:'Transformar o dataset do módulo anterior em FatoVendas + dimensões Produto, Cliente, Vendedor e Calendário.',evidence:'Modelo estrela sem relações ambíguas e com chaves únicas no lado 1.'},
+      {n:18,title:'Fundamentos de DAX e medidas',objective:'Construir os cálculos base do modelo e compreender o que é avaliado em tempo de consulta.',content:['DAX no Power Pivot do Excel e no Power BI.','Medida versus coluna calculada.','SUM, COUNTROWS, DISTINCTCOUNT, MIN e MAX.','DIVIDE para divisões seguras.','Medidas explícitas e convenções de nomenclatura.'],practice:'Criar medidas base de faturamento, clientes, pedidos/transações e indicadores médios coerentes com a granularidade.',evidence:'Tabela Dinâmica ou visual respondendo aos filtros usando medidas explícitas.'},
+      {n:19,title:'Contexto de linha e contexto de filtro',objective:'Entender o mecanismo central que diferencia DAX de fórmulas tradicionais do Excel.',content:['Contexto de filtro criado por eixos, segmentadores e filtros.','Contexto de linha em colunas calculadas e iteradores.','Propagação de filtros por relacionamentos.','Por que uma medida muda em cada célula de uma Tabela Dinâmica.','Introdução conceitual à transição de contexto.'],practice:'Usar a mesma medida em diferentes eixos e filtros, prevendo o resultado antes de executar.',evidence:'Explicar a mudança do resultado a partir do contexto, e não como “mágica do DAX”.'},
+      {n:20,title:'CALCULATE e modificação de contexto',objective:'Controlar filtros explicitamente para criar medidas analíticas.',content:['CALCULATE como modificador do contexto de filtro.','Filtros simples por coluna.','FILTER quando a condição exige iteração.','REMOVEFILTERS/ALL para remover filtros quando necessário.','VALUES e SELECTEDVALUE para trabalhar com o contexto atual.'],practice:'Criar faturamento de categoria, participação no total e indicadores que ignoram seletivamente alguns filtros.',evidence:'Medidas comparativas corretas em diferentes segmentações.'},
+      {n:21,title:'Iteradores, variáveis e expressões de tabela',objective:'Resolver cálculos linha a linha mantendo clareza e uma boa leitura da medida.',content:['SUMX e AVERAGEX como iteradores principais.','Diferença entre SUM(Coluna) e SUMX(Tabela, Expressão).','FILTER e outras expressões que devolvem tabelas.','VAR ... RETURN para legibilidade e depuração.','Uso moderado de tabelas virtuais.'],practice:'Calcular valores derivados linha a linha e reescrever uma medida longa usando variáveis.',evidence:'Identificar claramente quais partes da medida são escalares e quais devolvem tabelas.'},
+      {n:22,title:'Calendário e inteligência de tempo',objective:'Construir comparações temporais confiáveis usando uma dimensão de datas.',content:['DimCalendario e relacionamento ativo com a fato.','Ano, mês, número do mês, trimestre e ordenação.','TOTALYTD ou DATESYTD para acumulado.','DATEADD ou SAMEPERIODLASTYEAR para períodos comparáveis.','Variação absoluta e percentual; cuidados com calendários incompletos.'],practice:'Criar faturamento YTD, período anterior, ano anterior e variação percentual.',evidence:'Análise temporal consistente por mês e ano.'},
+      {n:23,title:'Indicadores gerenciais e visualização no Power BI',objective:'Transformar medidas em decisões, sem separar cálculo de comunicação.',content:['Meta, realizado, atingimento e desvio.','Participação percentual e ranking com RANKX.','Definição correta de ticket médio a partir de uma unidade de transação.','Cartões, barras, linhas, matriz, segmentadores e interações no Power BI.','Escolha do visual pela pergunta e construção de insights sustentados por medidas.'],practice:'Construir uma página de desempenho comercial no Power BI usando o mesmo modelo trabalhado no Excel.',evidence:'Página de relatório com indicadores coerentes e pelo menos 3 insights sustentados por dados.'},
+      {n:24,title:'Projeto integrado e apresentação de insights',objective:'Demonstrar autonomia no fluxo completo e consolidar a transferência entre Excel e Power BI.',content:['Ingestão, tipos, limpeza, normalização e combinação no Power Query.','Fato, dimensões, calendário e relacionamentos.','Medidas base, metas, variações, tempo, participação e ranking.','Excel como entrega operacional principal e Power BI como camada adicional.','Apresentação das decisões, problemas encontrados e insights.'],practice:'Desafio final individual ou em duplas com arquivos brutos de vendas, cadastros e metas.',evidence:'Entrega reproduzível, tecnicamente correta e acompanhada de explicação dos principais insights.'}
+    ]
+  }
+];
+
+let activeModule = Number(localStorage.getItem('cursoModulo') || 0);
+let activeLesson = Number(localStorage.getItem('cursoAula') || 0);
+if(activeModule<0 || activeModule>2) activeModule=0;
+if(activeLesson<0 || activeLesson>7) activeLesson=0;
+
+const moduleCards=document.getElementById('moduleCards');
+const lessonGrid=document.getElementById('lessonGrid');
+const lessonDetail=document.getElementById('lessonDetail');
+const browserTitle=document.getElementById('browserTitle');
+const browserDescription=document.getElementById('browserDescription');
+const browserChip=document.getElementById('browserChip');
+const progressLabel=document.getElementById('progressLabel');
+const progressBar=document.getElementById('progressBar');
+const browserShell=document.getElementById('browserShell');
+
+function renderModules(){
+  moduleCards.innerHTML=course.map((m,i)=>`<button class="module-card ${i===activeModule?'active':''}" style="--module:${m.color}" data-module="${i}" aria-pressed="${i===activeModule}">
+    <div class="module-no"><span>Módulo ${i+1}</span><span class="module-dot" aria-hidden="true"></span></div>
+    <h3>${m.name}</h3><p>${m.description}</p><div class="module-meta">${m.range} • 16h</div>
+  </button>`).join('');
+  moduleCards.querySelectorAll('[data-module]').forEach(btn=>btn.addEventListener('click',()=>{
+    activeModule=Number(btn.dataset.module);activeLesson=0;save();render();
+    document.getElementById('aulas').scrollIntoView({behavior:'smooth',block:'start'});
+  }));
+}
+function renderLessons(){
+  const m=course[activeModule];
+  browserShell.style.setProperty('--active-color',m.color);
+  browserTitle.textContent=`Módulo ${activeModule+1} — ${m.name}`;
+  browserDescription.textContent=m.focus;
+  browserChip.textContent=m.icon;
+  progressLabel.textContent=`Etapa ${activeModule+1} de 3 • ${m.range}`;
+  progressBar.style.width=`${((activeModule+1)/3)*100}%`;
+  lessonGrid.innerHTML=m.lessons.map((l,i)=>`<button class="lesson-btn ${i===activeLesson?'active':''}" data-lesson="${i}" aria-pressed="${i===activeLesson}"><span>Aula ${l.n}</span><strong>${l.title}</strong></button>`).join('');
+  lessonGrid.querySelectorAll('[data-lesson]').forEach(btn=>btn.addEventListener('click',()=>{
+    activeLesson=Number(btn.dataset.lesson);save();renderLessons();
+    document.getElementById('lessonDetail').scrollIntoView({behavior:'smooth',block:'center'});
+  }));
+  renderDetail();
+}
+function renderDetail(){
+  const m=course[activeModule], l=m.lessons[activeLesson];
+  lessonDetail.innerHTML=`
+    <div class="detail-main">
+      <span class="lesson-label">Aula ${l.n} • ${m.name}</span>
+      <h4>${l.title}</h4>
+      <p class="objective">${l.objective}</p>
+      <h5>Conteúdo da aula</h5>
+      <ul class="content-list">${l.content.map(x=>`<li>${x}</li>`).join('')}</ul>
+      <div class="detail-nav">
+        <button type="button" id="prevLesson" ${l.n===1?'disabled':''}>← Anterior</button>
+        <button type="button" id="nextLesson" ${l.n===24?'disabled':''}>Próxima →</button>
+      </div>
+    </div>
+    <aside class="detail-side">
+      <h5>Aplicação prática</h5>
+      <div class="practice-card"><small>Prática principal</small><p>${l.practice}</p></div>
+      <div class="practice-card"><small>Evidência de aprendizagem</small><p>${l.evidence}</p></div>
+    </aside>`;
+  document.getElementById('prevLesson')?.addEventListener('click',()=>moveLesson(-1));
+  document.getElementById('nextLesson')?.addEventListener('click',()=>moveLesson(1));
+}
+function moveLesson(delta){
+  const global=(activeModule*8)+activeLesson+delta;
+  if(global<0 || global>23) return;
+  activeModule=Math.floor(global/8);activeLesson=global%8;save();render();
+  document.getElementById('lessonDetail').scrollIntoView({behavior:'smooth',block:'center'});
+}
+function save(){localStorage.setItem('cursoModulo',activeModule);localStorage.setItem('cursoAula',activeLesson)}
+function render(){renderModules();renderLessons()}
+render();
+</script>
+</body>
+</html>
